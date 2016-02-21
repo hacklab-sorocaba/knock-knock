@@ -1,0 +1,5 @@
+# Just first commit (sensitive data)
+client/mac_list.dat
+client/mac_log.php
+client/run_mac_list.sh
+server/.htaccess

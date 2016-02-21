@@ -1,0 +1,9 @@
+@font-face {
+	font-family: 'DotsAllForNowJL';
+	src: url('DotsAllForNowJL.eot?#iefix') format('embedded-opentype'),	
+		url('DotsAllForNowJL.woff') format('woff'), 
+		url('DotsAllForNowJL.ttf')	format('truetype'), 
+		url('DotsAllForNowJL.svg#DotsAllForNowJL') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
