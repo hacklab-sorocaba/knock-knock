@@ -1,5 +1,5 @@
 <?php
-$URL = 'http://<ip>/';
+$URL = 'http://knock.dev/server/welcome/setmac';
 
 /* Leitura do arquivo de MACs */
 $filename = "mac_list.dat";

@@ -57,4 +57,17 @@ class User_model extends CI_Model {
 		return $result;
 	}
 
+	public function get_active_today() {
+		$query = $this->db
+					->select('name')
+					->from('users')
+					->where_in(array('mac' => "SELECT mac FROM `visitors` WHERE status = 1 AND DATE_FORMAT(create_date, '%Y-%m-%d') = DATE_FORMAT(NOW(), '%Y-%m-%d') GROUP BY mac"))
+					->where('always_on', '0')
+					->group_by('name')
+					->order_by('name');
+
+		$result = $query->get()->result();
+
+		return $result;
+	}
 }

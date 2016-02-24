@@ -33,7 +33,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 		background: #000;
 	}
 	.container {
-		max-width: 650px;
+		max-width: 750px;
 	}
 	.plate {
 		text-align: center;
@@ -58,8 +58,26 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 		text-shadow: 0 0 1em rgba(255,0,0,0.9);
 	}
 	.macs {
+		padding-top: 15px;
 		text-align: center;
 		color: #fff;
+	}
+	.users {
+		display: inline-block;
+		text-align: left;
+		color: #f5f5f5;
+	}
+	.footer {
+		text-align: center;
+		font: 12px Tahoma, Verdana, Arial;
+		color: #f1f1f1;
+		padding-top: 50px;
+	}
+	.footer-box {
+		display: inline-block;
+		background: #222;
+		border: 1px dotted #555;
+		padding: 15px;
 	}
 	</style>
 </head>
@@ -78,28 +96,83 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 	</div>
 
 
-	<br><br>
-	<div class="col-xs-12 macs">
-		<div class="col-xs-12 col-sm-6">
-		<strong>Todos os aparelhos online (<?=count($active_ignore);?>)</strong><br/>
-		(menos fixos)<br/><br/>
-		<?php
-			foreach ($active_ignore as $value) {
-				echo $value->name . "<br/>";
-			}
-		?>
+	<br>
+	<div class="col-xs-12">
+		<div class="col-xs-12 col-sm-4 macs">
+		<strong>Usuários online (<?=count($active_ignore);?>)</strong><br/>
+		<br/>
+		<span class='users'>
+			<?php
+				$ant = '';
+				$atual = '';
+				foreach ($active_ignore as $value) {
+					$atual = $value->name;
+
+					if ($ant != $atual || $atual == 'Guest') {
+						echo $value->name . "<br/>";
+					}
+
+					$ant = $atual;
+				}
+			?>
+		</span>
 		</div>
-		<div class="col-xs-12 col-sm-6">
-		<strong>Todos os aparelhos online (<?=count($active);?>)</strong><br/>
-		(inclusive fixos)<br/><br/>
-		<?php
-			foreach ($active as $value) {
-				echo $value->name . "<br/>";
-			}
-		?>
+		<div class="col-xs-12 col-sm-4 macs">
+		<strong>Passou por aqui hoje (<?=count($active_today);?>)</strong><br/>
+		<br/>
+		<span class='users'>
+			<?php
+				$ant = '';
+				$atual = '';
+				foreach ($active_today as $value) {
+					$atual = $value->name;
+
+					if ($ant != $atual || $atual == 'Guest') {
+						echo $value->name . "<br/>";
+					}
+
+					$ant = $atual;
+				}
+			?>
+		</span>
+		</div>
+		<div class="col-xs-12 col-sm-4 macs">
+		<strong>Devices online (<?=count($active);?>)</strong><br/>
+		<br/>
+		<span class='users'>
+			<?php
+				$ant = '';
+				$atual = '';
+				foreach ($active as $value) {
+					$atual = $value->name;
+
+					if ($ant != $atual || $atual == 'Guest') {
+						echo $value->name . "<br/>";
+					}
+
+					$ant = $atual;
+				}
+			?>
+		</span>
 		</div>
 	</div>
 
+</div>
+
+<div class="footer">
+	<span class="footer-box">
+		<u>Desenvolvimento:</u><br/>
+		<a href="www.angelito.com.br">www.angelito.com.br</a><br/>
+		<a href="www.guilhermeserrano.com.br">www.guilhermeserrano.com.br</a><br/>
+		<br/>
+		<u>GitHub:</u><br/>
+		<a href="https://github.com/hacklab-sorocaba/knock-knock">https://github.com/hacklab-sorocaba/knock-knock</a><br/>
+		<br/>
+		<u>Hacklab:</u><br/>
+		<a href="http://hacklab.club/">http://hacklab.club</a><br/>
+		<a href="https://www.facebook.com/hacklabsorocaba">https://www.facebook.com/hacklabsorocaba</a><br/>
+
+	</span>
 </div>
 
 <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>

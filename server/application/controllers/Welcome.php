@@ -29,8 +29,9 @@ class Welcome extends CI_Controller {
 		$this->load->model('User_model', 'User');
 
 		$params = array(
-			'active' => $this->User->get_active(),
-			'active_ignore' => $this->User->get_active(TRUE),
+			'active'		=> $this->User->get_active(),
+			'active_ignore'	=> $this->User->get_active(TRUE),
+			'active_today'	=> $this->User->get_active_today(),
 			);
 
 		$this->load->view('welcome_message', $params);
