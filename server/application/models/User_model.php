@@ -61,12 +61,13 @@ class User_model extends CI_Model {
 		$query = $this->db
 					->select('name')
 					->from('users')
-					->where_in(array('mac' => "SELECT mac FROM `visitors` WHERE status = 1 AND DATE_FORMAT(create_date, '%Y-%m-%d') = DATE_FORMAT(NOW(), '%Y-%m-%d') GROUP BY mac"))
+					->where_in('mac', "SELECT mac FROM `visitors` WHERE status = 1 AND DATE_FORMAT(create_date, '%Y-%m-%d') = DATE_FORMAT(NOW(), '%Y-%m-%d') GROUP BY mac", FALSE)
 					->where('always_on', '0')
 					->group_by('name')
 					->order_by('name');
 
 		$result = $query->get()->result();
+		//$this->output->enable_profiler(TRUE);
 
 		return $result;
 	}
